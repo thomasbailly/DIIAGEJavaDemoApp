@@ -3,26 +3,39 @@ package diiage.potherat.demo.demoapp3.ui.home;
 import androidx.hilt.lifecycle.ViewModelInject;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.Transformations;
 import androidx.lifecycle.ViewModel;
 
 import javax.inject.Inject;
 
 import diiage.potherat.demo.demoapp3.dal.repository.QuoteRepository;
+import diiage.potherat.demo.demoapp3.model.Quote;
 
 public class HomeViewModel extends ViewModel {
 
-    public QuoteRepository quoteRepository;
-    private MutableLiveData<String> mText;
+    private QuoteRepository quoteRepository;
 
     @Inject
     @ViewModelInject
     public HomeViewModel(QuoteRepository quoteRepository) {
         this.quoteRepository = quoteRepository;
-        mText = new MutableLiveData<>();
-        mText.setValue("This is home fragment");
     }
 
-    public LiveData<String> getText() {
-        return mText;
+    public LiveData<String> getCountQuote() {
+        return Transformations.map(quoteRepository.getCountQuote(), quote ->{
+            return quote.toString();
+        });
+         // return quoteRepository.getCountQuote();
+    }
+
+    public LiveData<String> getDistinctSource() {
+        return Transformations.map(quoteRepository.getDistinctSource(), source ->{
+            return source.toString();
+        });
+        // return quoteRepository.getDistinctSource();
+    }
+
+    public LiveData<Quote> getLastQuote() {
+        return quoteRepository.getLastQuote();
     }
 }

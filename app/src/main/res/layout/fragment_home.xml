@@ -20,20 +20,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:text="@{viewmodel.quoteRepository.countQuote}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+      <!--  android:text="@{viewmodel.countQuote}" -->
 
         <TextView
             android:id="@+id/txtDistinctSources"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:text="@{viewmodel.quoteRepository.distinctSource}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtNumberOfQuotes" />
+        <!-- android:text="@{viewmodel.distinctSource.toString()}" -->
 
         <include
             android:id="@+id/lastQuote"
@@ -43,8 +43,9 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            bind:Quote="@{viewmodel.quoteRepository.lastQuote}"/>
+            app:layout_constraintTop_toTopOf="parent"/>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</layout>
+        <!--  bind:Quote="@{viewmodel.lastQuote}"-->
+
+     </androidx.constraintlayout.widget.ConstraintLayout>
+ </layout>
